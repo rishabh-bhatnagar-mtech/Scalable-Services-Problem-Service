@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ps-deployment
+  labels:
+    app: problem-service
+spec:
+  selector:
+    matchLabels:
+      app: problem-service
+  template:
+    metadata:
+        labels:
+          app: problem-service
+    spec:
+      containers:
+        - name: problem-service
+          image: python
+          env:
+            - name: DB_HOST
+              value: "db-service"
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: POSTGRES_USER
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: POSTGRES_PASSWORD
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: POSTGRES_DB
