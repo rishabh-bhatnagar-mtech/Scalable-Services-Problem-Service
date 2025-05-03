@@ -14,7 +14,7 @@ class Settings(BaseSettings):
         return f"postgresql+psycopg://{self.DB_USER}:{self.DB_PASSWORD}@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}"
 
     model_config = SettingsConfigDict(
-        env_file=f"{pathlib.Path(__file__).resolve().parent.parent.parent}/.env",
+        env_file=f"{pathlib.Path(__file__).resolve().parent.parent.parent}/deployments/.env",
         env_file_encoding="utf-8",
     )
 
