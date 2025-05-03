@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: problem-service
-          image: python
+          image: problem-service:${PROBLEM_SERVICE_VERSION}
           env:
             - name: DB_HOST
               value: "db-service"
