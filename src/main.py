@@ -1,9 +1,9 @@
 import uvicorn
 from fastapi import FastAPI
 
-from src.dependencies.database import engine
-from src.models.problem import Base
-from src.routers.problem import router as problems_router
+from dependencies.database import engine
+from models.problem import Base
+from routers.problem import router as problems_router
 
 Base.metadata.create_all(bind=engine)
 
