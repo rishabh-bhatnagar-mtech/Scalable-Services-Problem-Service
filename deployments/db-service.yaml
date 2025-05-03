@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ps-db-deployment
-  namespace: problem_service
+  namespace: problem-service
   labels:
     app: db
 spec:

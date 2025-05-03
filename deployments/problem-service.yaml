@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ps-deployment
-  namespace: problem_service
+  namespace: problem-service
   labels:
     app: problem-service
 spec:
@@ -11,8 +11,8 @@ spec:
       app: problem-service
   template:
     metadata:
-        labels:
-          app: problem-service
+      labels:
+        app: problem-service
     spec:
       containers:
         - name: problem-service
