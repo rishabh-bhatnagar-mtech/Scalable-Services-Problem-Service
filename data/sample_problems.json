@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Two Sum",
+    "difficulty": "easy",
+    "description": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
+    "starter_code": {
+      "language": "python",
+      "code": "def two_sum(nums, target):\n    pass"
+    },
+    "test_cases": [
+      {
+        "input": "[2,7,11,15]\n9",
+        "output": "[0,1]"
+      },
+      {
+        "input": "[3,2,4]\n6",
+        "output": "[1,2]"
+      }
+    ],
+    "constraints": [
+      "2 <= nums.length <= 10^4",
+      "-10^9 <= nums[i] <= 10^9",
+      "-10^9 <= target <= 10^9"
+    ]
+  },
+  {
+    "title": "Reverse Integer",
+    "difficulty": "medium",
+    "description": "Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range, return 0.",
+    "starter_code": {
+      "language": "python",
+      "code": "def reverse(x):\n    pass"
+    },
+    "test_cases": [
+      {
+        "input": "123",
+        "output": "321"
+      },
+      {
+        "input": "-123",
+        "output": "-321"
+      },
+      {
+        "input": "120",
+        "output": "21"
+      }
+    ],
+    "constraints": [
+      "-2^31 <= x <= 2^31 - 1"
+    ]
+  }
+]

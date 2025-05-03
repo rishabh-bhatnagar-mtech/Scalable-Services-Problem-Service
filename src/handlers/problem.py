@@ -25,8 +25,8 @@ def create_problem_handler(problem: ProblemCreate, db: Session):
         title=problem.title,
         difficulty=problem.difficulty,
         description=problem.description,
-        starter_code=problem.starter_code,
-        test_cases=problem.test_cases,
+        starter_code=problem.starter_code.to_dict(),
+        test_cases=[tc.to_dict() for tc in problem.test_cases],
         constraints=problem.constraints,
     )
     db.add(db_problem)

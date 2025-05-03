@@ -25,16 +25,53 @@ class TestCase(BaseModel):
     input: str
     output: str
 
+    @classmethod
+    def from_dict(cls, data: dict) -> 'TestCase':
+        return cls(
+            input=data.get("input"),
+            output=data.get("output"),
+        )
+
+    def to_dict(self):
+        return {
+            "input": self.input,
+            "output": self.output,
+        }
+
 
 class StarterCode(BaseModel):
     language: str
     code: str
+
+    @classmethod
+    def from_dict(cls, data: dict) -> 'StarterCode':
+        return cls(
+            language=data.get("language"),
+            code=data.get("code"),
+        )
+
+    def to_dict(self):
+        return {
+            "language": self.language,
+            "code": self.code,
+        }
 
 
 class ProblemCreate(BaseModel):
     title: str
     difficulty: str
     description: str
-    starter_code: str
+    starter_code: StarterCode
     test_cases: List[TestCase]
     constraints: List[str]
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(
+            title=data.get("title"),
+            difficulty=data.get("difficulty"),
+            description=data.get("description"),
+            starter_code=StarterCode.from_dict(data.get("starter_code")),
+            test_cases=[TestCase.from_dict(tc) for tc in data.get("test_cases")],
+            constraints=data.get("constraints"),
+        )
