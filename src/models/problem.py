@@ -1,3 +1,5 @@
+from typing import List
+
 from pydantic import BaseModel
 from sqlalchemy import Column, Integer, String, Text, JSON, ARRAY, DateTime, text
 from sqlalchemy.orm import declarative_base
@@ -19,11 +21,20 @@ class Problem(Base):
     updated_at = Column(DateTime, server_default=text("NOW()"), onupdate=text("NOW()"))
 
 
-# Pydantic model for creating a problem
+class TestCase(BaseModel):
+    input: str
+    output: str
+
+
+class StarterCode(BaseModel):
+    language: str
+    code: str
+
+
 class ProblemCreate(BaseModel):
     title: str
     difficulty: str
     description: str
     starter_code: str
-    test_cases: str
-    constraints: str
+    test_cases: List[TestCase]
+    constraints: List[str]
