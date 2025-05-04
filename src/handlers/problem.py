@@ -42,3 +42,19 @@ def create_problem_handler(problem: ProblemCreate, db: Session):
         "constraints": db_problem.constraints,
         "created_at": db_problem.created_at.isoformat() if db_problem.created_at else None,
     }
+
+
+def get_problem_by_id_handler(problem_id: int, db: Session):
+    problem = db.query(Problem).filter(Problem.id == problem_id).first()
+    if not problem:
+        return None
+    return {
+        "id": problem.id,
+        "title": problem.title,
+        "difficulty": problem.difficulty,
+        "description": problem.description,
+        "starter_code": problem.starter_code,
+        "test_cases": problem.test_cases,
+        "constraints": problem.constraints,
+        "created_at": problem.created_at.isoformat() if problem.created_at else None,
+    }
