@@ -10,7 +10,7 @@ create_secrets:
 	rm deployments/subst-secret.yaml
 
 build_problem_image:
-	docker build -t problem-service:"${PROBLEM_SERVICE_VERSION}" -f deployments/Dockerfile . --progress=plain
+	docker build -t problem-service:"${PROBLEM_SERVICE_VERSION}" -f deployments/Dockerfile . --quiet
 
 deploy_problem_service:
 	export $$(xargs < deployments/.env) && \
