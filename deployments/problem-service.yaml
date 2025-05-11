@@ -37,3 +37,21 @@ spec:
                 secretKeyRef:
                   name: db-credentials
                   key: POSTGRES_DB
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: problem-service
+  namespace: problem-service
+  labels:
+    app: problem-service
+spec:
+  selector:
+    app: problem-service
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  type: ClusterIP
